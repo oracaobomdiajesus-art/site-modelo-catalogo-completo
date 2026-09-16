@@ -1,4 +1,6 @@
 {{ $home := .Site.Home }}
+{{ $cardapioSection := .Site.GetPage "cardapio" }}
+{{ $cardapioAtivo := and $home.Params.cardapio_ativo $cardapioSection }}
 {{ $produtosSection := .Site.GetPage "produtos" }}
 {{ $produtosAtivo := and $home.Params.produtos_ativo $produtosSection }}
 {{ $blogSection := .Site.GetPage "blog" }}
@@ -15,6 +17,7 @@
     <nav class="main-nav" id="main-nav">
       <a href="{{ $home.RelPermalink }}#sobre">Quem Somos</a>
       <a href="{{ $home.RelPermalink }}#servicos">Serviços</a>
+      {{ if $cardapioAtivo }}<a href="{{ $home.RelPermalink }}#cardapio">Preços</a>{{ end }}
       {{ if $produtosAtivo }}<a href="{{ $produtosSection.RelPermalink }}">Produtos</a>{{ end }}
       {{ if $blogAtivo }}<a href="{{ $blogSection.RelPermalink }}">{{ $home.Params.blog_titulo | default "Blog" }}</a>{{ end }}
       <a href="{{ $home.RelPermalink }}#localizacao">Localização</a>

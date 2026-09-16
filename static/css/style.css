@@ -443,6 +443,66 @@ img {
   margin: 0 0 16px;
 }
 
+/* Tabela de Preços (Cardápio) */
+
+.cardapio-section {
+  padding: 72px 20px;
+}
+
+.cardapio-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.cardapio-categoria h3 {
+  color: var(--primary);
+  font-size: 1.15rem;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--secondary);
+}
+
+.cardapio-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardapio-item-linha {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.cardapio-nome {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cardapio-pontilhado {
+  flex: 1;
+  border-bottom: 2px dotted rgba(0, 0, 0, 0.25);
+  margin-bottom: 4px;
+}
+
+.cardapio-preco {
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.cardapio-desc {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
+
 /* Produtos (destaques na home + catálogo completo) */
 
 .produtos-section {

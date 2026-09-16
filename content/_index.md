@@ -27,6 +27,10 @@ sobre_foto2: "/img/sobre-detalhe.svg"
 servicos_titulo: "Nossos Serviços"
 servicos_subtitulo: "Tudo para o seu cabelo e sua beleza"
 
+cardapio_ativo: true
+cardapio_titulo: "Tabela de Preços"
+cardapio_subtitulo: "Confira os valores e agende seu horário"
+
 produtos_ativo: true
 produtos_titulo: "Nossos Produtos"
 produtos_subtitulo: "Leve pra casa os produtos que usamos no salão"

@@ -106,6 +106,18 @@ content:
         label: "[Serviços] Subtítulo"
         type: "string"
 
+      - name: "cardapio_ativo"
+        label: "[Tabela de Preços] Mostrar tabela de preços?"
+        description: "Lista de itens com preço, organizada por categoria (tipo cardápio de restaurante ou tabela de preços de salão)"
+        type: "boolean"
+        default: false
+      - name: "cardapio_titulo"
+        label: "[Tabela de Preços] Título da seção"
+        type: "string"
+      - name: "cardapio_subtitulo"
+        label: "[Tabela de Preços] Subtítulo"
+        type: "string"
+
       - name: "produtos_ativo"
         label: "[Produtos] Mostrar produtos em destaque + catálogo completo?"
         description: "Mostra na home os produtos marcados como 'Destaque' e um botão para o catálogo completo com carrinho"
@@ -210,6 +222,58 @@ content:
       - name: "botao_url"
         label: "Link do botão"
         description: "Opcional, ex: link do WhatsApp"
+        type: "string"
+      - name: "peso"
+        label: "Ordem de exibição"
+        type: "number"
+      - name: "_build"
+        label: false
+        hidden: true
+        type: "object"
+        default:
+          render: "never"
+          list: "local"
+        fields:
+          - name: "render"
+            label: false
+            type: "string"
+            default: "never"
+            hidden: true
+          - name: "list"
+            label: false
+            type: "string"
+            default: "local"
+            hidden: true
+
+  - name: "cardapio"
+    label: "Tabela de Preços"
+    type: "collection"
+    path: "content/cardapio"
+    format: "yaml-frontmatter"
+    view:
+      primary: "title"
+      fields: [title, categoria, preco, peso]
+      default:
+        sort: "peso"
+        order: "asc"
+    fields:
+      - name: "title"
+        label: "Nome do item/serviço"
+        type: "string"
+        required: true
+      - name: "preco"
+        label: "Preço"
+        description: "Em reais, ex: 80.00"
+        type: "number"
+        required: true
+      - name: "categoria"
+        label: "Categoria"
+        description: "Texto livre para agrupar os itens, ex: Cabelo, Unhas, Sobrancelhas"
+        type: "string"
+        required: true
+      - name: "descricao"
+        label: "Observação"
+        description: "Opcional, ex: 'valor pode variar de acordo com o comprimento'"
         type: "string"
       - name: "peso"
         label: "Ordem de exibição"

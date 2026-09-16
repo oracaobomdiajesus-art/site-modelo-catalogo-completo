@@ -96,6 +96,45 @@
     {{ end }}
   </section>
 
+  {{ $cardapioSection := .Site.GetPage "cardapio" }}
+  {{ if and .Params.cardapio_ativo $cardapioSection }}
+  <section id="cardapio" class="cardapio-section">
+    <div class="section-heading">
+      <h2>{{ .Params.cardapio_titulo }}</h2>
+      <p>{{ .Params.cardapio_subtitulo }}</p>
+    </div>
+    {{ $itensCardapio := sort $cardapioSection.Pages "Params.peso" }}
+    {{ $categoriasCardapio := slice }}
+    {{ range $itensCardapio }}
+      {{ if not (in $categoriasCardapio .Params.categoria) }}
+        {{ $categoriasCardapio = $categoriasCardapio | append .Params.categoria }}
+      {{ end }}
+    {{ end }}
+    <div class="cardapio-grid">
+      {{ range $categoriasCardapio }}
+      {{ $categoriaAtual := . }}
+      <div class="cardapio-categoria">
+        <h3>{{ $categoriaAtual }}</h3>
+        <ul class="cardapio-lista">
+          {{ range $itensCardapio }}
+          {{ if eq .Params.categoria $categoriaAtual }}
+          <li class="cardapio-item">
+            <div class="cardapio-item-linha">
+              <span class="cardapio-nome">{{ .Title }}</span>
+              <span class="cardapio-pontilhado"></span>
+              <span class="cardapio-preco">{{ printf "R$ %.2f" (mul .Params.preco 1.0) | replaceRE "\\." "," }}</span>
+            </div>
+            {{ with .Params.descricao }}<p class="cardapio-desc">{{ . }}</p>{{ end }}
+          </li>
+          {{ end }}
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
   {{ $produtosSection := .Site.GetPage "produtos" }}
   {{ if and .Params.produtos_ativo $produtosSection }}
   <section id="produtos" class="produtos-section">
