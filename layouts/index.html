@@ -85,7 +85,7 @@
         {{ with .Params.icone }}
         <div class="servico-icone"><i class="{{ . }}"></i></div>
         {{ end }}
-        <h3>{{ .Params.title }}</h3>
+        <h3>{{ .Title }}</h3>
         <p>{{ .Params.descricao }}</p>
         {{ if and .Params.botao_texto .Params.botao_url }}
         <a class="btn btn-outline btn-small" href="{{ .Params.botao_url }}" target="_blank" rel="noopener">{{ .Params.botao_texto }}</a>
@@ -125,11 +125,12 @@
     </div>
     <div class="blog-grid">
       {{ range first 3 (sort $blogSection.Pages "Date" "desc") }}
-      <a class="blog-card" href="{{ .RelPermalink }}">
-        {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+      {{ $post := . }}
+      <a class="blog-card" href="{{ $post.RelPermalink }}">
+        {{ with $post.Params.capa }}<img src="{{ . | relURL }}" alt="{{ $post.Title }}" loading="lazy">{{ end }}
         <div class="blog-card-info">
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Params.resumo }}</p>
+          <h3>{{ $post.Title }}</h3>
+          <p>{{ $post.Params.resumo }}</p>
         </div>
       </a>
       {{ end }}

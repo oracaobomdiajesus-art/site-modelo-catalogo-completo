@@ -19,11 +19,12 @@
     {{ if .Pages }}
     <div class="blog-grid">
       {{ range sort .Pages "Date" "desc" }}
-      <a class="blog-card" href="{{ .RelPermalink }}">
-        {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="{{ .Title }}" loading="lazy">{{ end }}
+      {{ $post := . }}
+      <a class="blog-card" href="{{ $post.RelPermalink }}">
+        {{ with $post.Params.capa }}<img src="{{ . | relURL }}" alt="{{ $post.Title }}" loading="lazy">{{ end }}
         <div class="blog-card-info">
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Params.resumo }}</p>
+          <h3>{{ $post.Title }}</h3>
+          <p>{{ $post.Params.resumo }}</p>
         </div>
       </a>
       {{ end }}
