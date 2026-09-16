@@ -1,7 +1,7 @@
 ---
 title: "Como Escolher o Shampoo Ideal para Seu Tipo de Cabelo"
 date: 2026-08-05
-capa: ""
+capa: "/img/blog-shampoo.svg"
 resumo: "Cabelo seco, oleoso, cacheado ou colorido — cada tipo pede um cuidado diferente. Veja como acertar na escolha."
 ---
 

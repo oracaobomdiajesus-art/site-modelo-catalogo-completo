@@ -6,7 +6,7 @@ codigo: "301"
 em_promocao: false
 preco_promocional: 0
 exposicao: false
-foto: ""
+foto: "/img/produto-esmalte.svg"
 descricao: "Alta cobertura e brilho, com secagem rápida."
 categoria: "Unhas"
 estoque_site: 12

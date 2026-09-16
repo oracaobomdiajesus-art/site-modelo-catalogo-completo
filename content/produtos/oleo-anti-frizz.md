@@ -6,7 +6,7 @@ codigo: "103"
 em_promocao: false
 preco_promocional: 0
 exposicao: false
-foto: ""
+foto: "/img/produto-oleo.svg"
 descricao: "Controla o frizz e dá brilho, sem pesar os fios."
 categoria: "Cuidados com o Cabelo"
 estoque_site: 0

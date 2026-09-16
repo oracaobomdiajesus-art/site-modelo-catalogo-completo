@@ -1,7 +1,7 @@
 ---
 title: "5 Passos para uma Maquiagem Natural no Dia a Dia"
 date: 2026-08-20
-capa: ""
+capa: "/img/blog-maquiagem.svg"
 resumo: "Um make leve e rápido para realçar sua beleza sem pesar a mão."
 ---
 

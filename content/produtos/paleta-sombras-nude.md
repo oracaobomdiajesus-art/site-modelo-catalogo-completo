@@ -6,7 +6,7 @@ codigo: "202"
 em_promocao: false
 preco_promocional: 0
 exposicao: false
-foto: ""
+foto: "/img/produto-paleta.svg"
 descricao: "12 tons neutros para looks do dia a dia ou produções mais elaboradas."
 categoria: "Maquiagem"
 estoque_site: 0
