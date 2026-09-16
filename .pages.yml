@@ -3,6 +3,35 @@ media:
   output: "/img"
 
 content:
+  - name: "central-acessos"
+    label: "🔗 Central de Acessos"
+    type: "file"
+    path: "content/central-acessos.md"
+    format: "yaml-frontmatter"
+    fields:
+      - name: "body"
+        label: "Links das plataformas deste cliente"
+        description: "Cole aqui o link de cada plataforma na frente do nome. Pode apagar o que não usar e acrescentar outras."
+        type: "text"
+      - name: "_build"
+        label: false
+        hidden: true
+        type: "object"
+        default:
+          render: "never"
+          list: "never"
+        fields:
+          - name: "render"
+            label: false
+            type: "string"
+            default: "never"
+            hidden: true
+          - name: "list"
+            label: false
+            type: "string"
+            default: "never"
+            hidden: true
+
   - name: "profile"
     label: "Perfil e Seções"
     type: "file"
