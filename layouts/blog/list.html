@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Site.Home.Params.blog_titulo | default "Blog" }} · {{ .Site.Home.Title }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{ partial "theme-style.html" . }}
+  {{ partial "analytics.html" . }}
+</head>
+<body>
+  {{ partial "header.html" . }}
+
+  <main class="blog-list-page">
+    <div class="section-heading">
+      <h1>{{ .Site.Home.Params.blog_titulo | default "Blog" }}</h1>
+    </div>
+    {{ if .Pages }}
+    <div class="blog-grid">
+      {{ range sort .Pages "Params.data" "desc" }}
+      <a class="blog-card" href="{{ .RelPermalink }}">
+        {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="{{ .Title }}" loading="lazy">{{ end }}
+        <div class="blog-card-info">
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Params.resumo }}</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="catalog-empty">Nenhum post publicado ainda.</p>
+    {{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.hero_descricao }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{ partial "theme-style.html" . }}
+  {{ partial "analytics.html" . }}
+</head>
+<body>
+  {{ partial "header.html" . }}
+
+  {{ if .Params.aviso_ativo }}
+  <div class="aviso-faixa">
+    <div class="aviso-track">
+      <span>{{ .Params.aviso_texto }}</span>
+      <span>{{ .Params.aviso_texto }}</span>
+      <span>{{ .Params.aviso_texto }}</span>
+      <span>{{ .Params.aviso_texto }}</span>
+    </div>
+  </div>
+  {{ end }}
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        {{ with .Params.hero_selo }}<span class="badge">{{ . }}</span>{{ end }}
+        <h1>{{ .Params.hero_titulo }} <span class="destaque">{{ .Params.hero_destaque }}</span></h1>
+        <p class="hero-desc">{{ .Params.hero_descricao }}</p>
+        <div class="hero-actions">
+          {{ with .Params.whatsapp_url }}
+          <a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> {{ $.Params.hero_botao1_texto | default "Falar no WhatsApp" }}
+          </a>
+          {{ end }}
+          <a class="btn btn-outline" href="#servicos">{{ .Params.hero_botao2_texto | default "Ver Serviços" }}</a>
+        </div>
+      </div>
+      {{ with .Params.hero_imagem }}
+      <div class="hero-image">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}">
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <section id="sobre" class="sobre-section">
+    <div class="sobre-inner">
+      <div class="sobre-fotos">
+        {{ with .Params.sobre_foto1 }}<img class="foto-principal" src="{{ . | relURL }}" alt="{{ $.Title }}">{{ end }}
+        {{ with .Params.sobre_foto2 }}<img class="foto-secundaria" src="{{ . | relURL }}" alt="{{ $.Title }}">{{ end }}
+      </div>
+      <div class="sobre-texto">
+        <span class="eyebrow">Nossa História</span>
+        <h2>{{ .Params.sobre_titulo }}</h2>
+        <p>{{ .Params.sobre_texto }}</p>
+        {{ $selosSection := .Site.GetPage "selos" }}
+        {{ if $selosSection }}
+        <div class="selos-grid">
+          {{ range sort $selosSection.Pages "Params.peso" }}
+          <div class="selo-item">
+            {{ with .Params.icone }}<i class="{{ . }}"></i>{{ end }}
+            <span>{{ .Params.texto }}</span>
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="servicos-section">
+    <div class="section-heading">
+      <h2>{{ .Params.servicos_titulo }}</h2>
+      <p>{{ .Params.servicos_subtitulo }}</p>
+    </div>
+    {{ $servicosSection := .Site.GetPage "servicos" }}
+    {{ if $servicosSection }}
+    <div class="servicos-grid">
+      {{ range sort $servicosSection.Pages "Params.peso" }}
+      <div class="servico-card">
+        {{ with .Params.icone }}
+        <div class="servico-icone"><i class="{{ . }}"></i></div>
+        {{ end }}
+        <h3>{{ .Params.title }}</h3>
+        <p>{{ .Params.descricao }}</p>
+        {{ if and .Params.botao_texto .Params.botao_url }}
+        <a class="btn btn-outline btn-small" href="{{ .Params.botao_url }}" target="_blank" rel="noopener">{{ .Params.botao_texto }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </section>
+
+  {{ $produtosSection := .Site.GetPage "produtos" }}
+  {{ if and .Params.produtos_ativo $produtosSection }}
+  <section id="produtos" class="produtos-section">
+    <div class="section-heading">
+      <h2>{{ .Params.produtos_titulo }}</h2>
+      <p>{{ .Params.produtos_subtitulo }}</p>
+    </div>
+    {{ $destaques := sort (where (where $produtosSection.Pages "Params.ativo" true) "Params.exposicao" true) "Params.peso" }}
+    {{ if $destaques }}
+    <div class="product-grid">
+      {{ range first 4 $destaques }}
+      {{ partial "product-card.html" . }}
+      {{ end }}
+    </div>
+    {{ end }}
+    <div class="blog-ver-todos">
+      <a class="btn btn-outline" href="{{ $produtosSection.RelPermalink }}">Ver Catálogo Completo</a>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ $blogSection := .Site.GetPage "blog" }}
+  {{ if and .Params.blog_ativo $blogSection (gt (len $blogSection.Pages) 0) }}
+  <section id="blog" class="blog-section">
+    <div class="section-heading">
+      <h2>{{ .Params.blog_titulo | default "Blog" }}</h2>
+    </div>
+    <div class="blog-grid">
+      {{ range first 3 (sort $blogSection.Pages "Params.data" "desc") }}
+      <a class="blog-card" href="{{ .RelPermalink }}">
+        {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+        <div class="blog-card-info">
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Params.resumo }}</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    <div class="blog-ver-todos">
+      <a class="btn btn-outline" href="{{ $blogSection.RelPermalink }}">Ver todos os posts</a>
+    </div>
+  </section>
+  {{ end }}
+
+  <section id="localizacao" class="localizacao-section">
+    <div class="section-heading">
+      <h2>Onde Estamos</h2>
+    </div>
+    <div class="localizacao-inner">
+      {{ with .Params.endereco }}
+      <div class="mapa-embed">
+        <iframe
+          src="https://www.google.com/maps?q={{ . | urlquery }}&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="localizacao-info">
+        <p><i class="fa-solid fa-location-dot"></i> {{ . }}</p>
+        <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination={{ . | urlquery }}" target="_blank" rel="noopener">
+          Como Chegar
+        </a>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ partial "footer.html" . }}
+  {{ partial "cart-panel.html" . }}
+
+  <script src="{{ "js/main.js" | relURL }}"></script>
+  <script src="{{ "js/cart.js" | relURL }}"></script>
+</body>
+</html>

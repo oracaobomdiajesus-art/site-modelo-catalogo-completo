@@ -1,0 +1,48 @@
+{{ $home := .Site.Home }}
+{{ $produtosSection := .Site.GetPage "produtos" }}
+{{ $produtosAtivo := and $home.Params.produtos_ativo $produtosSection }}
+{{ $blogSection := .Site.GetPage "blog" }}
+{{ $blogAtivo := and $home.Params.blog_ativo $blogSection (gt (len $blogSection.Pages) 0) }}
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-brand">
+      <div class="brand">
+        {{ with $home.Params.logo }}<img src="{{ . | relURL }}" alt="{{ $home.Title }}">{{ end }}
+        <span>{{ $home.Title }}</span>
+      </div>
+      <p>{{ $home.Params.hero_descricao }}</p>
+      {{ with $home.Params.instagram_url }}
+      <div class="footer-social">
+        <a href="{{ . }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      {{ end }}
+    </div>
+    <div class="footer-col">
+      <h3>Links Rápidos</h3>
+      <a href="{{ $home.RelPermalink }}#sobre">Quem Somos</a>
+      <a href="{{ $home.RelPermalink }}#servicos">Serviços</a>
+      {{ if $produtosAtivo }}<a href="{{ $produtosSection.RelPermalink }}">Produtos</a>{{ end }}
+      {{ if $blogAtivo }}<a href="{{ $blogSection.RelPermalink }}">{{ $home.Params.blog_titulo | default "Blog" }}</a>{{ end }}
+      <a href="{{ $home.RelPermalink }}#localizacao">Localização</a>
+    </div>
+    <div class="footer-col">
+      <h3>Contato</h3>
+      {{ with $home.Params.endereco }}<p><i class="fa-solid fa-location-dot"></i> {{ . }}</p>{{ end }}
+      {{ with $home.Params.telefone }}<p><i class="fa-solid fa-phone"></i> {{ . }}</p>{{ end }}
+      {{ with $home.Params.whatsapp_url }}
+      <a class="btn btn-whatsapp" href="{{ . }}" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {{ now.Year }} {{ $home.Title }}. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+{{ with $home.Params.whatsapp_url }}
+<a class="whatsapp-fab" href="{{ . }}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+{{ end }}

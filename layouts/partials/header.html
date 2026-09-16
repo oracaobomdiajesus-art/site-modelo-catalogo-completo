@@ -1,0 +1,28 @@
+{{ $home := .Site.Home }}
+{{ $produtosSection := .Site.GetPage "produtos" }}
+{{ $produtosAtivo := and $home.Params.produtos_ativo $produtosSection }}
+{{ $blogSection := .Site.GetPage "blog" }}
+{{ $blogAtivo := and $home.Params.blog_ativo $blogSection (gt (len $blogSection.Pages) 0) }}
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ $home.RelPermalink }}">
+      {{ with $home.Params.logo }}<img src="{{ . | relURL }}" alt="{{ $home.Title }}">{{ end }}
+      <span>{{ $home.Title }}</span>
+    </a>
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <nav class="main-nav" id="main-nav">
+      <a href="{{ $home.RelPermalink }}#sobre">Quem Somos</a>
+      <a href="{{ $home.RelPermalink }}#servicos">Serviços</a>
+      {{ if $produtosAtivo }}<a href="{{ $produtosSection.RelPermalink }}">Produtos</a>{{ end }}
+      {{ if $blogAtivo }}<a href="{{ $blogSection.RelPermalink }}">{{ $home.Params.blog_titulo | default "Blog" }}</a>{{ end }}
+      <a href="{{ $home.RelPermalink }}#localizacao">Localização</a>
+    </nav>
+    {{ with $home.Params.whatsapp_url }}
+    <a class="btn btn-primary header-cta" href="{{ . }}" target="_blank" rel="noopener">
+      <i class="fa-brands fa-whatsapp"></i> Fale Conosco
+    </a>
+    {{ end }}
+  </div>
+</header>

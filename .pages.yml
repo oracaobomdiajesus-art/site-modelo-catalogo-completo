@@ -1,0 +1,373 @@
+media:
+  input: "static/img"
+  output: "/img"
+
+content:
+  - name: "profile"
+    label: "Perfil e Seções"
+    type: "file"
+    path: "content/_index.md"
+    format: "yaml-frontmatter"
+    fields:
+      - name: "title"
+        label: "Nome do negócio"
+        type: "string"
+        required: true
+      - name: "logo"
+        label: "Logo"
+        type: "image"
+      - name: "telefone"
+        label: "Telefone (exibido no site)"
+        type: "string"
+      - name: "whatsapp_url"
+        label: "URL do WhatsApp"
+        description: "Ex: https://wa.me/55SEUNUMERO"
+        type: "string"
+      - name: "instagram_url"
+        label: "URL do Instagram"
+        description: "Opcional"
+        type: "string"
+      - name: "chave_pix"
+        label: "Chave Pix"
+        description: "Ou Pix copia e cola. Opcional — o botão de Pix só aparece se preenchido"
+        type: "string"
+      - name: "endereco"
+        label: "Endereço completo"
+        description: "Usado no mapa e no botão 'Como Chegar'"
+        type: "string"
+      - name: "tema_cor"
+        label: "Tema de cor do site"
+        type: "select"
+        default: "marrom"
+        options:
+          values:
+            - value: "marrom"
+              label: "Marrom/Bege (padrão)"
+            - value: "verde"
+              label: "Verde"
+            - value: "rosa"
+              label: "Rosa"
+            - value: "azul"
+              label: "Azul"
+      - name: "fundo_ativo"
+        label: "Usar imagem de fundo no site"
+        type: "boolean"
+        default: false
+      - name: "fundo_foto"
+        label: "Foto de fundo"
+        description: "Só aparece se a opção acima estiver ligada"
+        type: "image"
+      - name: "fundo_opacidade"
+        label: "Opacidade da camada sobre a imagem de fundo"
+        description: "De 0 (foto bem viva) a 100 (foto quase escondida). Sugestão: entre 30 e 55."
+        type: "number"
+        default: 40
+
+      - name: "hero_selo"
+        label: "[Topo] Selo/etiqueta pequena"
+        description: "Ex: Amor em Cada Detalhe"
+        type: "string"
+      - name: "hero_titulo"
+        label: "[Topo] Título — parte normal"
+        type: "string"
+      - name: "hero_destaque"
+        label: "[Topo] Título — parte destacada (caixa colorida)"
+        type: "string"
+      - name: "hero_descricao"
+        label: "[Topo] Descrição curta"
+        type: "text"
+      - name: "hero_botao1_texto"
+        label: "[Topo] Texto do botão 1 (WhatsApp)"
+        type: "string"
+      - name: "hero_botao2_texto"
+        label: "[Topo] Texto do botão 2 (leva para Serviços)"
+        type: "string"
+      - name: "hero_imagem"
+        label: "[Topo] Foto de destaque"
+        type: "image"
+
+      - name: "sobre_titulo"
+        label: "[Quem Somos] Título"
+        type: "string"
+      - name: "sobre_texto"
+        label: "[Quem Somos] Texto"
+        type: "text"
+      - name: "sobre_foto1"
+        label: "[Quem Somos] Foto principal"
+        type: "image"
+      - name: "sobre_foto2"
+        label: "[Quem Somos] Foto pequena (sobreposta)"
+        type: "image"
+
+      - name: "servicos_titulo"
+        label: "[Serviços] Título da seção"
+        type: "string"
+      - name: "servicos_subtitulo"
+        label: "[Serviços] Subtítulo"
+        type: "string"
+
+      - name: "produtos_ativo"
+        label: "[Produtos] Mostrar produtos em destaque + catálogo completo?"
+        description: "Mostra na home os produtos marcados como 'Destaque' e um botão para o catálogo completo com carrinho"
+        type: "boolean"
+        default: false
+      - name: "produtos_titulo"
+        label: "[Produtos] Título da seção na home"
+        type: "string"
+      - name: "produtos_subtitulo"
+        label: "[Produtos] Subtítulo na home"
+        type: "string"
+
+      - name: "aviso_ativo"
+        label: "[Aviso] Mostrar faixa de aviso rolante?"
+        type: "boolean"
+        default: false
+      - name: "aviso_texto"
+        label: "[Aviso] Texto do aviso"
+        type: "string"
+
+      - name: "blog_ativo"
+        label: "[Blog] Mostrar Blog/Notícias?"
+        description: "Só aparece no menu e na home se tiver pelo menos um post publicado"
+        type: "boolean"
+        default: false
+      - name: "blog_titulo"
+        label: "[Blog] Nome da seção"
+        description: "Ex: Blog, Notícias, Novidades, Dicas"
+        type: "string"
+        default: "Blog"
+
+  - name: "selos"
+    label: "Selos de Credibilidade (Quem Somos)"
+    type: "collection"
+    path: "content/selos"
+    format: "yaml-frontmatter"
+    view:
+      primary: "texto"
+      fields: [texto, peso]
+      default:
+        sort: "peso"
+        order: "asc"
+    fields:
+      - name: "icone"
+        label: "Ícone"
+        description: "Classe Font Awesome. Ex: fa-solid fa-heart"
+        type: "string"
+      - name: "texto"
+        label: "Texto do selo"
+        description: "Curto, ex: Atendimento Humano"
+        type: "string"
+        required: true
+      - name: "peso"
+        label: "Ordem de exibição"
+        type: "number"
+      - name: "_build"
+        label: false
+        hidden: true
+        type: "object"
+        default:
+          render: "never"
+          list: "local"
+        fields:
+          - name: "render"
+            label: false
+            type: "string"
+            default: "never"
+            hidden: true
+          - name: "list"
+            label: false
+            type: "string"
+            default: "local"
+            hidden: true
+
+  - name: "servicos"
+    label: "Serviços"
+    type: "collection"
+    path: "content/servicos"
+    format: "yaml-frontmatter"
+    view:
+      primary: "title"
+      fields: [title, peso]
+      default:
+        sort: "peso"
+        order: "asc"
+    fields:
+      - name: "icone"
+        label: "Ícone"
+        description: "Classe Font Awesome. Ex: fa-solid fa-star"
+        type: "string"
+      - name: "title"
+        label: "Nome do serviço"
+        type: "string"
+        required: true
+      - name: "descricao"
+        label: "Descrição curta"
+        type: "text"
+      - name: "botao_texto"
+        label: "Texto do botão"
+        description: "Opcional"
+        type: "string"
+      - name: "botao_url"
+        label: "Link do botão"
+        description: "Opcional, ex: link do WhatsApp"
+        type: "string"
+      - name: "peso"
+        label: "Ordem de exibição"
+        type: "number"
+      - name: "_build"
+        label: false
+        hidden: true
+        type: "object"
+        default:
+          render: "never"
+          list: "local"
+        fields:
+          - name: "render"
+            label: false
+            type: "string"
+            default: "never"
+            hidden: true
+          - name: "list"
+            label: false
+            type: "string"
+            default: "local"
+            hidden: true
+
+  - name: "categorias"
+    label: "Categorias do Catálogo"
+    type: "collection"
+    path: "content/categorias"
+    format: "yaml-frontmatter"
+    view:
+      primary: "title"
+      fields: [title, ativo]
+      default:
+        sort: "title"
+        order: "asc"
+    fields:
+      - name: "title"
+        label: "Nome da categoria"
+        type: "string"
+        required: true
+      - name: "ativo"
+        label: "Categoria ativa"
+        description: "Desligue para esconder todos os produtos dela de uma vez"
+        type: "boolean"
+        default: true
+
+  - name: "produtos"
+    label: "Produtos do Catálogo"
+    type: "collection"
+    path: "content/produtos"
+    format: "yaml-frontmatter"
+    view:
+      primary: "title"
+      fields: [title, categoria, preco, ativo, peso]
+      default:
+        sort: "peso"
+        order: "asc"
+    fields:
+      - name: "slug"
+        label: "Identificador (slug)"
+        type: "string"
+        required: true
+      - name: "title"
+        label: "Nome do produto"
+        type: "string"
+        required: true
+      - name: "preco"
+        label: "Preço cheio"
+        description: "Em reais, ex: 12.50"
+        type: "number"
+        required: true
+      - name: "codigo"
+        label: "Código do produto"
+        description: "Opcional. Ex: 001, 002 — você escolhe"
+        type: "string"
+      - name: "em_promocao"
+        label: "Produto em promoção?"
+        type: "boolean"
+        default: false
+      - name: "preco_promocional"
+        label: "Preço promocional"
+        description: "Em reais, ex: 9.90 — só vale se 'Produto em promoção' estiver ligado"
+        type: "number"
+      - name: "exposicao"
+        label: "Destaque na página inicial"
+        description: "Mostra esse produto na seção 'Produtos' da home"
+        type: "boolean"
+        default: false
+      - name: "foto"
+        label: "Foto do produto"
+        type: "image"
+      - name: "descricao"
+        label: "Descrição"
+        type: "text"
+      - name: "categoria"
+        label: "Categoria"
+        type: "reference"
+        required: true
+        options:
+          collection: "categorias"
+          value: "{fields.title}"
+          label: "{fields.title}"
+      - name: "estoque_site"
+        label: "Estoque exibido no site"
+        description: "Opcional — deixe em branco se não quiser mostrar. 0 mostra 'Esgotado'"
+        type: "number"
+      - name: "ativo"
+        label: "Produto ativo"
+        description: "Aparece no catálogo quando ligado"
+        type: "boolean"
+        default: true
+      - name: "peso"
+        label: "Ordem de exibição"
+        type: "number"
+      - name: "_build"
+        label: false
+        hidden: true
+        type: "object"
+        default:
+          render: "never"
+          list: "local"
+        fields:
+          - name: "render"
+            label: false
+            type: "string"
+            default: "never"
+            hidden: true
+          - name: "list"
+            label: false
+            type: "string"
+            default: "local"
+            hidden: true
+
+  - name: "blog"
+    label: "Blog / Notícias"
+    type: "collection"
+    path: "content/blog"
+    format: "yaml-frontmatter"
+    view:
+      primary: "title"
+      fields: [title, data]
+      default:
+        sort: "data"
+        order: "desc"
+    fields:
+      - name: "title"
+        label: "Título do post"
+        type: "string"
+        required: true
+      - name: "data"
+        label: "Data de publicação"
+        type: "date"
+      - name: "capa"
+        label: "Imagem de capa"
+        type: "image"
+      - name: "resumo"
+        label: "Resumo curto"
+        description: "Aparece na lista do blog"
+        type: "text"
+      - name: "body"
+        label: "Conteúdo do post"
+        type: "rich-text"

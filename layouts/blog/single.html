@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} · {{ .Site.Home.Title }}</title>
+  <meta name="description" content="{{ .Params.resumo }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{ partial "theme-style.html" . }}
+  {{ partial "analytics.html" . }}
+</head>
+<body>
+  {{ partial "header.html" . }}
+
+  <main class="blog-post-page">
+    <a class="back-link" href="{{ .Parent.RelPermalink }}"><i class="fa-solid fa-arrow-left"></i> Voltar ao {{ .Site.Home.Params.blog_titulo | default "Blog" }}</a>
+    {{ with .Params.capa }}<img class="blog-post-capa" src="{{ . | relURL }}" alt="{{ $.Title }}">{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.data }}<p class="blog-post-data">{{ .Format "02/01/2006" }}</p>{{ end }}
+    <div class="blog-post-corpo">
+      {{ .Content }}
+    </div>
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>
