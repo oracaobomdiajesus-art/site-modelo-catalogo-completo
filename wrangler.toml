@@ -1,4 +1,5 @@
 # Site institucional completo + catálogo (Hugo), publicado via Cloudflare Workers (arquivos estáticos).
+# (redeploy trigger)
 name = "site-modelo-catalogo-completo"
 compatibility_date = "2026-09-16"
 
