@@ -1,5 +1,14 @@
 {{ $tema := .Site.Home.Params.tema_cor | default "marrom" }}
-{{ if ne $tema "marrom" }}
+{{ $corPrimaria := .Site.Home.Params.cor_primaria }}
+{{ $corSecundaria := .Site.Home.Params.cor_secundaria }}
+{{ if and $corPrimaria $corSecundaria }}
+<style>
+  :root {
+    --primary: {{ $corPrimaria }};
+    --secondary: {{ $corSecundaria }};
+  }
+</style>
+{{ else if ne $tema "marrom" }}
   {{ $temas := dict
     "verde" (dict "primary" "#2E7D32" "secondary" "#C8E6C9")
     "rosa" (dict "primary" "#AD1457" "secondary" "#F8BBD0")

@@ -7,6 +7,8 @@ instagram_url: "https://instagram.com/studiobellahair"
 chave_pix: "studiobellahair@pix.com.br"
 endereco: "Rua Visconde de Pirajá, 550 - Ipanema, Rio de Janeiro - RJ"
 tema_cor: rosa
+cor_primaria: ""
+cor_secundaria: ""
 fundo_ativo: false
 fundo_foto: ""
 fundo_opacidade: 40
