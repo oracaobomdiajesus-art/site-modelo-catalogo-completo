@@ -27,13 +27,13 @@ sobre_foto2: ""
 servicos_titulo: "Nossos Serviços"
 servicos_subtitulo: "Conheça o que oferecemos"
 
-produtos_ativo: false
+produtos_ativo: true
 produtos_titulo: "Nossos Produtos"
 produtos_subtitulo: "Confira alguns destaques — o catálogo completo tem muito mais."
 
-aviso_ativo: false
+aviso_ativo: true
 aviso_texto: "Escreva aqui um aviso ou promoção — ele vai rolar em uma faixa no site."
 
-blog_ativo: false
+blog_ativo: true
 blog_titulo: "Blog"
 ---
