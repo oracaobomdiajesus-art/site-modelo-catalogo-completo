@@ -124,7 +124,7 @@
       <h2>{{ .Params.blog_titulo | default "Blog" }}</h2>
     </div>
     <div class="blog-grid">
-      {{ range first 3 (sort $blogSection.Pages "Params.data" "desc") }}
+      {{ range first 3 (sort $blogSection.Pages "Date" "desc") }}
       <a class="blog-card" href="{{ .RelPermalink }}">
         {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
         <div class="blog-card-info">

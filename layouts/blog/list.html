@@ -18,7 +18,7 @@
     </div>
     {{ if .Pages }}
     <div class="blog-grid">
-      {{ range sort .Pages "Params.data" "desc" }}
+      {{ range sort .Pages "Date" "desc" }}
       <a class="blog-card" href="{{ .RelPermalink }}">
         {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="{{ .Title }}" loading="lazy">{{ end }}
         <div class="blog-card-info">

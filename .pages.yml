@@ -349,16 +349,16 @@ content:
     format: "yaml-frontmatter"
     view:
       primary: "title"
-      fields: [title, data]
+      fields: [title, date]
       default:
-        sort: "data"
+        sort: "date"
         order: "desc"
     fields:
       - name: "title"
         label: "Título do post"
         type: "string"
         required: true
-      - name: "data"
+      - name: "date"
         label: "Data de publicação"
         type: "date"
       - name: "capa"

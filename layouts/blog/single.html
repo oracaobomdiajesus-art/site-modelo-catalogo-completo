@@ -17,7 +17,7 @@
     <a class="back-link" href="{{ .Parent.RelPermalink }}"><i class="fa-solid fa-arrow-left"></i> Voltar ao {{ .Site.Home.Params.blog_titulo | default "Blog" }}</a>
     {{ with .Params.capa }}<img class="blog-post-capa" src="{{ . | relURL }}" alt="{{ $.Title }}">{{ end }}
     <h1>{{ .Title }}</h1>
-    {{ with .Params.data }}<p class="blog-post-data">{{ .Format "02/01/2006" }}</p>{{ end }}
+    {{ if not .Date.IsZero }}<p class="blog-post-data">{{ .Date.Format "02/01/2006" }}</p>{{ end }}
     <div class="blog-post-corpo">
       {{ .Content }}
     </div>

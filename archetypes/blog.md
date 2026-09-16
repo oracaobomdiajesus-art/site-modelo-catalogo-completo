@@ -1,6 +1,6 @@
 ---
 title: ""
-data: {{ .Date }}
+date: {{ .Date }}
 capa: ""
 resumo: ""
 ---
