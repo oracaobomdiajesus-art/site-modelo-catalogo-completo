@@ -1,39 +1,39 @@
 ---
-title: Minha Empresa
+title: Studio Bella Hair
 logo: /img/logo.svg
-telefone: "(00) 00000-0000"
-whatsapp_url: "https://wa.me/5500000000000"
-instagram_url: ""
-chave_pix: ""
-endereco: "Av. Exemplo, 123 - Bairro, Cidade - UF"
-tema_cor: marrom
+telefone: "(21) 98877-6655"
+whatsapp_url: "https://wa.me/5521988776655"
+instagram_url: "https://instagram.com/studiobellahair"
+chave_pix: "studiobellahair@pix.com.br"
+endereco: "Rua Visconde de Pirajá, 550 - Ipanema, Rio de Janeiro - RJ"
+tema_cor: rosa
 fundo_ativo: false
 fundo_foto: ""
 fundo_opacidade: 40
 
-hero_selo: "Atendimento de Confiança"
-hero_titulo: "Serviço Completo na"
-hero_destaque: "Sua Região"
-hero_descricao: "Descrição curta do seu negócio — o que você faz e por que as pessoas devem te procurar."
-hero_botao1_texto: "Falar no WhatsApp"
+hero_selo: "Beleza e Autoestima"
+hero_titulo: "Seu Visual Renovado no"
+hero_destaque: "Studio Bella Hair"
+hero_descricao: "Cortes, coloração, tratamentos capilares e uma equipe apaixonada por realçar sua beleza."
+hero_botao1_texto: "Agendar Horário"
 hero_botao2_texto: "Ver Serviços"
 hero_imagem: ""
 
-sobre_titulo: "Há Anos Cuidando de Você"
-sobre_texto: "Conte aqui a história do seu negócio: quando começou, quem fundou, e o que torna o atendimento especial."
+sobre_titulo: "8 Anos Transformando Autoestima"
+sobre_texto: "Fundado por Camila Rocha em 2016, o Studio Bella Hair é referência em Ipanema para quem busca cuidado, técnica e um atendimento que faz você se sentir em casa."
 sobre_foto1: ""
 sobre_foto2: ""
 
 servicos_titulo: "Nossos Serviços"
-servicos_subtitulo: "Conheça o que oferecemos"
+servicos_subtitulo: "Tudo para o seu cabelo e sua beleza"
 
 produtos_ativo: true
 produtos_titulo: "Nossos Produtos"
-produtos_subtitulo: "Confira alguns destaques — o catálogo completo tem muito mais."
+produtos_subtitulo: "Leve pra casa os produtos que usamos no salão"
 
 aviso_ativo: true
-aviso_texto: "Escreva aqui um aviso ou promoção — ele vai rolar em uma faixa no site."
+aviso_texto: "💇‍♀️ Toda terça-feira, 15% de desconto em coloração — agende já!"
 
 blog_ativo: true
-blog_titulo: "Blog"
+blog_titulo: "Dicas de Beleza"
 ---

@@ -1,6 +1,6 @@
 ---
 icone: "fa-solid fa-award"
-texto: "Anos de Mercado"
+texto: "8 Anos de Mercado"
 peso: 3
 _build:
   render: never
