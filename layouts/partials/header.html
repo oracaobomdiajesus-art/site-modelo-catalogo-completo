@@ -5,6 +5,8 @@
 {{ $produtosAtivo := and $home.Params.produtos_ativo $produtosSection }}
 {{ $blogSection := .Site.GetPage "blog" }}
 {{ $blogAtivo := and $home.Params.blog_ativo $blogSection (gt (len $blogSection.Pages) 0) }}
+{{ $parceirosSection := .Site.GetPage "parceiros" }}
+{{ $parceirosAtivo := and $home.Params.parceiros_ativo $parceirosSection (gt (len $parceirosSection.Pages) 0) }}
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="{{ $home.RelPermalink }}">
@@ -20,6 +22,7 @@
       {{ if $cardapioAtivo }}<a href="{{ $home.RelPermalink }}#cardapio">Preços</a>{{ end }}
       {{ if $produtosAtivo }}<a href="{{ $produtosSection.RelPermalink }}">Produtos</a>{{ end }}
       {{ if $blogAtivo }}<a href="{{ $blogSection.RelPermalink }}">{{ $home.Params.blog_titulo | default "Blog" }}</a>{{ end }}
+      {{ if $parceirosAtivo }}<a href="{{ $home.RelPermalink }}#parceiros">Parceiros</a>{{ end }}
       <a href="{{ $home.RelPermalink }}#localizacao">Localização</a>
     </nav>
     {{ with $home.Params.whatsapp_url }}

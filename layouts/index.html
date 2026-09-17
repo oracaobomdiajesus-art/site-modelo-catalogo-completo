@@ -180,6 +180,27 @@
   </section>
   {{ end }}
 
+  {{ $parceirosSection := .Site.GetPage "parceiros" }}
+  {{ if and .Params.parceiros_ativo $parceirosSection (gt (len $parceirosSection.Pages) 0) }}
+  <section id="parceiros" class="parceiros-section">
+    <div class="section-heading">
+      <h2>{{ .Params.parceiros_titulo | default "Nossos Parceiros" }}</h2>
+      {{ with .Params.parceiros_subtitulo }}<p>{{ . }}</p>{{ end }}
+    </div>
+    <div class="parceiros-grid">
+      {{ range sort $parceirosSection.Pages "Params.peso" }}
+      {{ $parceiro := . }}
+      <a class="parceiro-card" href="{{ $parceiro.Params.url }}" target="_blank" rel="noopener" itemscope itemtype="https://schema.org/Organization">
+        {{ with $parceiro.Params.logo }}<img itemprop="logo" src="{{ . | relURL }}" alt="Logo {{ $parceiro.Title }}" loading="lazy">{{ end }}
+        <span itemprop="name" class="parceiro-nome">{{ $parceiro.Title }}</span>
+        {{ with $parceiro.Params.descricao }}<span class="parceiro-desc">{{ . }}</span>{{ end }}
+        <meta itemprop="url" content="{{ $parceiro.Params.url }}">
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
   <section id="localizacao" class="localizacao-section">
     <div class="section-heading">
       <h2>Onde Estamos</h2>

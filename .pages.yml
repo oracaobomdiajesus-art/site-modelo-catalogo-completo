@@ -186,6 +186,19 @@ content:
         type: "string"
         default: "Blog"
 
+      - name: "parceiros_ativo"
+        label: "[Parceiros] Mostrar seção Nossos Parceiros?"
+        description: "Lista de negócios parceiros com link pro site/Perfil da Empresa no Google deles. Ajuda no ranqueamento local — de vocês e deles — quando é uma citação real e recíproca."
+        type: "boolean"
+        default: false
+      - name: "parceiros_titulo"
+        label: "[Parceiros] Título da seção"
+        type: "string"
+        default: "Nossos Parceiros"
+      - name: "parceiros_subtitulo"
+        label: "[Parceiros] Subtítulo"
+        type: "string"
+
   - name: "selos"
     label: "Selos de Credibilidade (Quem Somos)"
     type: "collection"
@@ -259,6 +272,56 @@ content:
       - name: "botao_url"
         label: "Link do botão"
         description: "Opcional, ex: link do WhatsApp"
+        type: "string"
+      - name: "peso"
+        label: "Ordem de exibição"
+        type: "number"
+      - name: "_build"
+        label: false
+        hidden: true
+        type: "object"
+        default:
+          render: "never"
+          list: "local"
+        fields:
+          - name: "render"
+            label: false
+            type: "string"
+            default: "never"
+            hidden: true
+          - name: "list"
+            label: false
+            type: "string"
+            default: "local"
+            hidden: true
+
+  - name: "parceiros"
+    label: "Parceiros"
+    type: "collection"
+    path: "content/parceiros"
+    format: "yaml-frontmatter"
+    view:
+      primary: "title"
+      fields: [title, peso]
+      default:
+        sort: "peso"
+        order: "asc"
+    fields:
+      - name: "title"
+        label: "Nome do parceiro"
+        type: "string"
+        required: true
+      - name: "logo"
+        label: "Logo do parceiro"
+        type: "image"
+      - name: "url"
+        label: "Site ou Perfil da Empresa no Google do parceiro"
+        description: "Use o site oficial do parceiro ou, se ele não tiver site, o link do Perfil da Empresa no Google dele. É esse link que conta como citação/indicação local pros dois negócios."
+        type: "string"
+        required: true
+      - name: "descricao"
+        label: "Como vocês se relacionam"
+        description: "Frase curta e real, ex: Fornecedor oficial de embalagens personalizadas"
         type: "string"
       - name: "peso"
         label: "Ordem de exibição"
