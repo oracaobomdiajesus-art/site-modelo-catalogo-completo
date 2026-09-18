@@ -43,7 +43,7 @@ aviso_texto: "💇‍♀️ Toda terça-feira, 15% de desconto em coloração �
 blog_ativo: true
 blog_titulo: "Dicas de Beleza"
 
-parceiros_ativo: false
+parceiros_ativo: true
 parceiros_titulo: "Nossos Parceiros"
 parceiros_subtitulo: "Marcas e negócios locais em quem confiamos"
 ---
