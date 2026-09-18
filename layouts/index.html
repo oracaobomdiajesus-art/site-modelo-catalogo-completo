@@ -118,11 +118,19 @@
         <ul class="cardapio-lista">
           {{ range $itensCardapio }}
           {{ if eq .Params.categoria $categoriaAtual }}
+          {{ $temPromo := and .Params.em_promocao .Params.preco_promocional }}
           <li class="cardapio-item">
             <div class="cardapio-item-linha">
               <span class="cardapio-nome">{{ .Title }}</span>
               <span class="cardapio-pontilhado"></span>
-              <span class="cardapio-preco">{{ printf "R$ %.2f" (mul .Params.preco 1.0) | replaceRE "\\." "," }}</span>
+              <span class="cardapio-preco">
+                {{ if $temPromo }}
+                <span class="price-original">{{ printf "R$ %.2f" (mul .Params.preco 1.0) | replaceRE "\\." "," }}</span>
+                <span class="price-promo">{{ printf "R$ %.2f" (mul .Params.preco_promocional 1.0) | replaceRE "\\." "," }}</span>
+                {{ else }}
+                {{ printf "R$ %.2f" (mul .Params.preco 1.0) | replaceRE "\\." "," }}
+                {{ end }}
+              </span>
             </div>
             {{ with .Params.descricao }}<p class="cardapio-desc">{{ . }}</p>{{ end }}
           </li>

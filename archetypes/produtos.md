@@ -9,6 +9,7 @@ exposicao: false
 foto: ""
 descricao: ""
 categoria: ""
+estoque: 0
 estoque_site: 0
 ativo: true
 peso: 99
